@@ -132,18 +132,18 @@
           
           <div class="document clearer body">
             
-  <div class="section" id="formulas-and-mathematical-detail">
-<span id="system-models-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#formulas-and-mathematical-detail" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="seemingly-unrelated-regression-sur-sure">
-<h2>Seemingly Unrelated Regression (SUR/SURE)<a class="headerlink" href="#seemingly-unrelated-regression-sur-sure" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="Formulas-and-Mathematical-Detail">
+<span id="system-models-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#Formulas-and-Mathematical-Detail" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Seemingly-Unrelated-Regression-(SUR/SURE)">
+<h2>Seemingly Unrelated Regression (SUR/SURE)<a class="headerlink" href="#Seemingly-Unrelated-Regression-(SUR/SURE)" title="Permalink to this headline">¶</a></h2>
 <p>Seemingly unrelated regression is a system regression estimator which
 jointly estimates multiple models. This allows joint hypothesis testing
 of parameters across models since the parameter covariance is robust to
 correlation of residuals across models. It can also lead to more precise
 parameter estimates if some residuals are conditionally homoskedastic
 and regressors differ across equations.</p>
-<div class="section" id="basic-notation">
-<h3>Basic Notation<a class="headerlink" href="#basic-notation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Basic-Notation">
+<h3>Basic Notation<a class="headerlink" href="#Basic-Notation" title="Permalink to this headline">¶</a></h3>
 <p>Assume <span class="math">\(K\)</span> series are observed for <span class="math">\(N\)</span> time periods. Denote
 the stacked observations of series <span class="math">\(i\)</span> as <span class="math">\(Y_{i}\)</span> and its
 corresponding regressor matrix <span class="math">\(X_{i}\)</span>. The complete model
@@ -191,8 +191,8 @@ residuals. In practice <span class="math">\(\Sigma\)</span> is not known as so a
 \[\hat{\beta}_{FGLS}=\left(X^{\prime}\hat{\Omega}X\right)^{-1}X^{\prime}\hat{\Omega}^{-1}Y\]</div>
 <p>where <span class="math">\(\hat{\Omega}=I_{N}\otimes\hat{\Sigma}\)</span>.</p>
 </div>
-<div class="section" id="covariance-estimation">
-<h3>Covariance Estimation<a class="headerlink" href="#covariance-estimation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Covariance-Estimation">
+<h3>Covariance Estimation<a class="headerlink" href="#Covariance-Estimation" title="Permalink to this headline">¶</a></h3>
 <p><strong>Homoskedastic Data</strong></p>
 <p>When residuals are assumed to be homoskedastic, the covariance can be
 consistently estimated by</p>
@@ -238,8 +238,8 @@ that element <span class="math">\(ij\)</span> of <span class="math">\(\hat{\Sigm
 <div class="math">
 \[\frac{T}{\sqrt{\left(T-P_{i}\right)\left(T-P_{j}\right)}}.\]</div>
 </div>
-<div class="section" id="other-statistics">
-<h3>Other Statistics<a class="headerlink" href="#other-statistics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Other-Statistics">
+<h3>Other Statistics<a class="headerlink" href="#Other-Statistics" title="Permalink to this headline">¶</a></h3>
 <p><strong>Goodness of fit</strong></p>
 <p>The reported <span class="math">\(R^{2}\)</span> is always for the data, or weighted data is
 weights are used, for either OLS or GLS. The means that the reported
@@ -254,8 +254,8 @@ singular. When this occurs, the <span class="math">\(F\)</span> statistic cannot
 calculated.</p>
 </div>
 </div>
-<div class="section" id="memory-efficient-calculations">
-<h2>Memory efficient calculations<a class="headerlink" href="#memory-efficient-calculations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Memory-efficient-calculations">
+<h2>Memory efficient calculations<a class="headerlink" href="#Memory-efficient-calculations" title="Permalink to this headline">¶</a></h2>
 <p>The parameter estimates in the SUR model can are</p>
 <div class="math">
 \[\left(X^{\prime}\Omega^{-1}X\right)^{-1}\left(X^{\prime}\Omega^{-1}Y\right)^{-1}\]</div>

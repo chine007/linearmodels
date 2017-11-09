@@ -136,20 +136,20 @@
           
           <div class="document clearer body">
             
-  <div class="section" id="implementation-choices">
-<span id="panel-implementation-choices"></span><h1>Implementation Choices<a class="headerlink" href="#implementation-choices" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="Implementation-Choices">
+<span id="panel-implementation-choices"></span><h1>Implementation Choices<a class="headerlink" href="#Implementation-Choices" title="Permalink to this headline">¶</a></h1>
 <p>While the implementation of the panel estimators is similar to Stata, there
 are some differenced worth noting.</p>
-<div class="section" id="clustered-covariance-with-fixed-effects">
-<h2>Clustered Covariance with Fixed Effects<a class="headerlink" href="#clustered-covariance-with-fixed-effects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Clustered-Covariance-with-Fixed-Effects">
+<h2>Clustered Covariance with Fixed Effects<a class="headerlink" href="#Clustered-Covariance-with-Fixed-Effects" title="Permalink to this headline">¶</a></h2>
 <p>When suing clustered standard errors and entity effects, it isn’t necessary
 to adjust for estimated effects. <code class="docutils literal"><span class="pre">PanelOLS</span></code> attempts to detect when this is
 the case and automatically adjust the degree of freedom. This can be
 overridden using by setting the fit option <code class="docutils literal"><span class="pre">auto_df=False</span></code> and then
 changing the value of <code class="docutils literal"><span class="pre">count_effects</span></code>.</p>
 </div>
-<div class="section" id="r2-definitions">
-<h2>R2 definitions<a class="headerlink" href="#r2-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="R2-definitions">
+<h2>R2 definitions<a class="headerlink" href="#R2-definitions" title="Permalink to this headline">¶</a></h2>
 <p>The <span class="math">\(R^2\)</span> definitions are all designed so that the reported value will
 match the original model using the estimated parameters.  This differs from
 other packages, such as Stata, which use a correlation based measure which

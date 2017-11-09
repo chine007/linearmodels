@@ -136,10 +136,10 @@
           
           <div class="document clearer body">
             
-  <div class="section" id="formulas-and-mathematical-detail">
-<span id="panel-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#formulas-and-mathematical-detail" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="models">
-<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="Formulas-and-Mathematical-Detail">
+<span id="panel-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#Formulas-and-Mathematical-Detail" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Models">
+<h2>Models<a class="headerlink" href="#Models" title="Permalink to this headline">¶</a></h2>
 <p>The estimators in this module are designed to estimate the parameters of
 a model specified by</p>
 <div class="math">
@@ -152,8 +152,8 @@ idiosyncratic shock. The most important difference in the models is the
 assumptions on <span class="math">\(\alpha_{i}\)</span> which determine whether the estimator
 is consistent and/or efficient. There are <span class="math">\(N\)</span> entities and
 <span class="math">\(T_{i}\)</span> observations for entity <span class="math">\(i\)</span>.</p>
-<div class="section" id="fixed-effect-estimation-panelols">
-<h3>Fixed Effect Estimation (PanelOLS)<a class="headerlink" href="#fixed-effect-estimation-panelols" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Fixed-Effect-Estimation-(PanelOLS)">
+<h3>Fixed Effect Estimation (PanelOLS)<a class="headerlink" href="#Fixed-Effect-Estimation-(PanelOLS)" title="Permalink to this headline">¶</a></h3>
 <p>The fixed effect estimator with entity effects estimates the model</p>
 <div class="math">
 \[y_{it}-\bar{y}_{i}=(x_{it}-x_{i})\beta+\left(\epsilon_{it}-\bar{\epsilon}_{i}\right).\]</div>
@@ -184,8 +184,8 @@ of dummies will contain all values and the second will have one dropped.</p>
 all variables <span class="math">\(y_{it,}\)</span><span class="math">\(x_{it}\)</span>, <span class="math">\(d_{1,it}\)</span> and
 <span class="math">\(d_{2,it}\)</span>(if included) are multiplied by <span class="math">\(\sqrt{w_{it}}\)</span>.</p>
 </div>
-<div class="section" id="random-effect-estimation-randomeffects">
-<h3>Random Effect Estimation (RandomEffects)<a class="headerlink" href="#random-effect-estimation-randomeffects" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Random-Effect-Estimation-(RandomEffects)">
+<h3>Random Effect Estimation (RandomEffects)<a class="headerlink" href="#Random-Effect-Estimation-(RandomEffects)" title="Permalink to this headline">¶</a></h3>
 <p>The random effects estimator makes use of a quasi-differenced model,</p>
 <div class="math">
 \[y_{it}-\hat{\theta}_{i}\bar{y}_{i}=\left(1-\hat{\theta}_{i}\right)\alpha_{i}+(x_{it}-\hat{\theta}_{i}x_{i})\beta+\left(\epsilon_{it}-\hat{\theta}_{i}\bar{\epsilon}_{i}\right)\]</div>
@@ -216,8 +216,8 @@ are unbalanced.</p>
 and the final regression terms are all multiplied by
 <span class="math">\(\sqrt{w_{it}}\)</span>.</p>
 </div>
-<div class="section" id="between-estimation-betweenols">
-<h3>Between Estimation (BetweenOLS)<a class="headerlink" href="#between-estimation-betweenols" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Between-Estimation-(BetweenOLS)">
+<h3>Between Estimation (BetweenOLS)<a class="headerlink" href="#Between-Estimation-(BetweenOLS)" title="Permalink to this headline">¶</a></h3>
 <p>Between estimation regresses time averages of the dependent variable on
 the time averaged values of the regressors,</p>
 <div class="math">
@@ -238,8 +238,8 @@ Re-weighting unbalanced panels is exposed through the fit option
 and reweighting uses the computed variance of the weighted averages in
 the actual between regression.</p>
 </div>
-<div class="section" id="first-difference-estimation-firstdifferenceols">
-<h3>First Difference Estimation (FirstDifferenceOLS)<a class="headerlink" href="#first-difference-estimation-firstdifferenceols" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="First-Difference-Estimation-(FirstDifferenceOLS)">
+<h3>First Difference Estimation (FirstDifferenceOLS)<a class="headerlink" href="#First-Difference-Estimation-(FirstDifferenceOLS)" title="Permalink to this headline">¶</a></h3>
 <p>First difference estimation regresses first difference of the dependent
 variable on the first difference the regressors,</p>
 <div class="math">
@@ -252,8 +252,8 @@ the structure that conditional variance of
 <span class="math">\(y_{it}\propto w_{it}^{-1}\)</span> and the variance of the difference is
 the sum of the variances when observations are uncorrelated.</p>
 </div>
-<div class="section" id="pooled-model-estimation-pooledols">
-<h3>Pooled Model Estimation (PooledOLS)<a class="headerlink" href="#pooled-model-estimation-pooledols" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Pooled-Model-Estimation-(PooledOLS)">
+<h3>Pooled Model Estimation (PooledOLS)<a class="headerlink" href="#Pooled-Model-Estimation-(PooledOLS)" title="Permalink to this headline">¶</a></h3>
 <p>The pooled estimator is a standard regression,</p>
 <div class="math">
 \[y_{it}=x_{it}\beta+\epsilon_{it}.\]</div>
@@ -264,10 +264,10 @@ the square root of the weights prior to the regression (i.e.,
 <span class="math">\(x_{it}\)</span> is similarly transformed).</p>
 </div>
 </div>
-<div class="section" id="covariance-estimators">
-<h2>Covariance Estimators<a class="headerlink" href="#covariance-estimators" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="standard-covariance-estimator-unadjusted">
-<h3>Standard Covariance Estimator (unadjusted)<a class="headerlink" href="#standard-covariance-estimator-unadjusted" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Covariance-Estimators">
+<h2>Covariance Estimators<a class="headerlink" href="#Covariance-Estimators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Standard-Covariance-Estimator-(unadjusted)">
+<h3>Standard Covariance Estimator (unadjusted)<a class="headerlink" href="#Standard-Covariance-Estimator-(unadjusted)" title="Permalink to this headline">¶</a></h3>
 <p>The standard covariance estimator is</p>
 <div class="math">
 \[s^{2}\Sigma_{XX}^{-1}\]</div>
@@ -280,8 +280,8 @@ the square root of the weights prior to the regression (i.e.,
 <p>where <span class="math">\(n_{obs}=\sum_{i=1}^{N}T_{i}\)</span>. If the debiased options is
 not used, the <span class="math">\(k\)</span> is omitted.</p>
 </div>
-<div class="section" id="heteroskedastic-covariance-estimator-robust">
-<h3>Heteroskedastic Covariance Estimator (robust)<a class="headerlink" href="#heteroskedastic-covariance-estimator-robust" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Heteroskedastic-Covariance-Estimator-(robust)">
+<h3>Heteroskedastic Covariance Estimator (robust)<a class="headerlink" href="#Heteroskedastic-Covariance-Estimator-(robust)" title="Permalink to this headline">¶</a></h3>
 <p>The standard covariance estimator is</p>
 <div class="math">
 \[n_{obs}/(n_{obs}-k)\Sigma_{XX}^{-1}\hat{S}\Sigma_{XX}^{-1}\]</div>
@@ -290,8 +290,8 @@ not used, the <span class="math">\(k\)</span> is omitted.</p>
 \[\hat{S}=\sum_{i=1}^{N}\sum_{t=1}^{T_{i}}\hat{\epsilon}_{it}^{2}x_{it}^{\prime}x_{it}.\]</div>
 <p>The <span class="math">\(-k\)</span> term is dropped if the debiased options is not used</p>
 </div>
-<div class="section" id="clustered-covariance-estimator">
-<h3>Clustered Covariance Estimator<a class="headerlink" href="#clustered-covariance-estimator" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Clustered-Covariance-Estimator">
+<h3>Clustered Covariance Estimator<a class="headerlink" href="#Clustered-Covariance-Estimator" title="Permalink to this headline">¶</a></h3>
 <p>The clustered covariance estimator supports 1 and 2 way clustering.</p>
 <div class="math">
 \[n_{obs}/(n_{obs}-k)\Sigma_{XX}^{-1}\hat{S}_{\mathcal{G}}\Sigma_{XX}^{-1}\]</div>
@@ -316,8 +316,8 @@ the group debias term is not used, the expression
 e.g., entity effects with clustering by entity, there the degrees of
 freedom used in estimating the effects are <em>not</em> counted.</p>
 </div>
-<div class="section" id="driscoll-kraay-covariance-estimator">
-<h3>Driscoll-Kraay Covariance Estimator<a class="headerlink" href="#driscoll-kraay-covariance-estimator" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Driscoll-Kraay-Covariance-Estimator">
+<h3>Driscoll-Kraay Covariance Estimator<a class="headerlink" href="#Driscoll-Kraay-Covariance-Estimator" title="Permalink to this headline">¶</a></h3>
 <p>The Driscoll-Kraay covariance estimator may be appropriate when the
 number of time periods is relatively large (e.g., a large T panel), and
 are given by</p>

@@ -133,14 +133,14 @@
           
           <div class="document clearer body">
             
-  <div class="section" id="formulas-and-mathematical-detail">
-<span id="asset-pricing-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#formulas-and-mathematical-detail" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="Formulas-and-Mathematical-Detail">
+<span id="asset-pricing-mathematical-notation"></span><h1>Formulas and Mathematical Detail<a class="headerlink" href="#Formulas-and-Mathematical-Detail" title="Permalink to this headline">¶</a></h1>
 <p>There are <span class="math">\(N\)</span> test portfolios, <span class="math">\(r_{t}\)</span> (<span class="math">\(p\)</span> by 1)
 which are usually assumed to be excess returns (zero-investment
 portfolios) and <span class="math">\(K\)</span> factors, <span class="math">\(f_{t}\)</span> (<span class="math">\(k\)</span> by 1). For
 return series there are <span class="math">\(T\)</span> observations.</p>
-<div class="section" id="linear-factor-model-for-traded-factors">
-<h2>Linear Factor Model for Traded Factors<a class="headerlink" href="#linear-factor-model-for-traded-factors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Linear-Factor-Model-for-Traded-Factors">
+<h2>Linear Factor Model for Traded Factors<a class="headerlink" href="#Linear-Factor-Model-for-Traded-Factors" title="Permalink to this headline">¶</a></h2>
 <p>This model is a Seemingly Unrelated Regression (SUR). All models share
 the same regressors so that the model for test portfolio <span class="math">\(i\)</span> is</p>
 <div class="math">
@@ -170,8 +170,8 @@ and <span class="math">\(bw\)</span> is the bandwidth. The reported risk premia 
 average returns on the factors, and the covariance of the risk premia
 estimates is based on the factor residuals after demeaning using either
 the simple estimator or the kernel estimator.</p>
-<div class="section" id="the-j-statistic">
-<h3>The J statistic<a class="headerlink" href="#the-j-statistic" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="The-J-statistic">
+<h3>The J statistic<a class="headerlink" href="#The-J-statistic" title="Permalink to this headline">¶</a></h3>
 <p>The J statistic is implemented as</p>
 <div class="math">
 \[J=\hat{\alpha}^{\prime}\hat{\Sigma}_{\alpha}^{-1}\hat{\alpha}^{\prime}\sim\chi_{N}^{2}\]</div>
@@ -179,8 +179,8 @@ the simple estimator or the kernel estimator.</p>
 columns<span class="math">\(1,(k+1)+1,2(k+1)+1,\ldots\)</span> of <span class="math">\(\hat{\Sigma}\)</span>.</p>
 </div>
 </div>
-<div class="section" id="linear-factor-model-for-non-traded-factors">
-<h2>Linear Factor Model for Non-traded Factors<a class="headerlink" href="#linear-factor-model-for-non-traded-factors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Linear-Factor-Model-for-Non-traded-Factors">
+<h2>Linear Factor Model for Non-traded Factors<a class="headerlink" href="#Linear-Factor-Model-for-Non-traded-Factors" title="Permalink to this headline">¶</a></h2>
 <p>When factors are not traded, the SUR approach cannot be used since the
 expected value of the factor is not equal to its risk premium. One
 solution is to use a multi-step estimator. The first step regresses the
@@ -239,8 +239,8 @@ I_{N}\otimes\left[0\ \hat{\lambda}\right] &amp; \left[1_{N}\,\hat{\beta}\right] 
 <span class="math">\(g_{t}\)</span>, and its form is identical to either the
 heteroskedasticity consistent estimator or the HAC estimator in the
 previous section.</p>
-<div class="section" id="improved-specification-using-gls">
-<h3>Improved Specification using GLS<a class="headerlink" href="#improved-specification-using-gls" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Improved-Specification-using-GLS">
+<h3>Improved Specification using GLS<a class="headerlink" href="#Improved-Specification-using-GLS" title="Permalink to this headline">¶</a></h3>
 <div class="math">
 \[\begin{split}\left[\begin{array}{c}
 f_{c,t}\otimes\epsilon_{t}\\
@@ -273,8 +273,8 @@ Each block has a 0 columns corresponding to <span class="math">\(c_{i}\)</span>.
 heteroskedasticity consistent estimator or the HAC estimator in the
 previous section.</p>
 </div>
-<div class="section" id="id1">
-<h3>The J statistic<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="The-J-statistic">
+<h3>The J statistic<a class="headerlink" href="#The-J-statistic" title="Permalink to this headline">¶</a></h3>
 <p>The J statistic is virtually identical to the <span class="math">\(J\)</span> statistic from
 traded factor model except that it has a difference distribution.</p>
 <div class="math">
@@ -286,8 +286,8 @@ regression of <span class="math">\(N\)</span> average returns on <span class="ma
 block of <span class="math">\(\hat{\Sigma}\)</span>.</p>
 </div>
 </div>
-<div class="section" id="gmm-estimation-of-linear-factor-models">
-<h2>GMM Estimation of Linear Factor Models<a class="headerlink" href="#gmm-estimation-of-linear-factor-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="GMM-Estimation-of-Linear-Factor-Models">
+<h2>GMM Estimation of Linear Factor Models<a class="headerlink" href="#GMM-Estimation-of-Linear-Factor-Models" title="Permalink to this headline">¶</a></h2>
 <p>The GMM estimator solves a set of non-linear moment conditions of the
 form</p>
 <div class="math">
