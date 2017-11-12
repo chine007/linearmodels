@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>Introduction &#8212; linearmodels 3.5+20.g56495ff documentation</title>
+    <title>Introduction &#8212; linearmodels 3.5+24.g0f3c8de documentation</title>
     <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.5+20.g56495ff',
+        VERSION:     '3.5+24.g0f3c8de',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -59,7 +59,7 @@
         <li class="right" >
           <a href="index.html" title="Instrumental Variable Estimation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+20.g56495ff documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+24.g0f3c8de documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Instrumental Variable Estimation</a> &#187;</li> 
       </ul>
     </div>
@@ -71,7 +71,7 @@
   <div id="left-column">
     <div class="sphinxsidebar">
         <a href="
-    ../index.html" class="text-logo">linearmodels 3.5 (+20, g56495ff)</a>
+    ../index.html" class="text-logo">linearmodels 3.5 (+24, g0f3c8de)</a>
         
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
@@ -134,8 +134,8 @@
           
           <div class="document clearer body">
             
-  <div class="section" id="Introduction">
-<span id="iv-introduction"></span><h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="introduction">
+<span id="iv-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>Instrumental variable models are used when regressors are endogenous
 or there is measurement error on the variable.  These models make use of
 instruments which are correlated with the endogenous variable but not
@@ -203,8 +203,8 @@ also valid to use when projecting the endogenous variables.</li>
 <span class="n">Debiased</span><span class="p">:</span> <span class="kc">False</span>
 </pre></div>
 </div>
-<div class="section" id="Estimators">
-<h2>Estimators<a class="headerlink" href="#Estimators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="estimators">
+<h2>Estimators<a class="headerlink" href="#estimators" title="Permalink to this headline">¶</a></h2>
 <p>Four methods to estimate models are available.</p>
 <ul class="simple">
 <li>Two-stage least squares (2SLS) <a class="reference internal" href="methods.html#linearmodels.iv.model.IV2SLS" title="linearmodels.iv.model.IV2SLS"><code class="xref py py-class docutils literal"><span class="pre">IV2SLS</span></code></a></li>
@@ -217,10 +217,10 @@ estimators <a class="reference internal" href="methods.html#linearmodels.iv.mode
 <p>All estimator require the same four key inputs, <code class="docutils literal"><span class="pre">dependent</span></code>, <code class="docutils literal"><span class="pre">exog</span></code> ,
 <code class="docutils literal"><span class="pre">endog</span></code>  and <code class="docutils literal"><span class="pre">instruments</span></code>. In addition to these four required
 parameters, optional arguments can be used to alter the default configuration.</p>
-<div class="section" id="Optional-Arguments">
-<h3>Optional Arguments<a class="headerlink" href="#Optional-Arguments" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="2SLS-Estimation">
-<h4>2SLS Estimation<a class="headerlink" href="#2SLS-Estimation" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="optional-arguments">
+<h3>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sls-estimation">
+<h4>2SLS Estimation<a class="headerlink" href="#sls-estimation" title="Permalink to this headline">¶</a></h4>
 <p>The 2SLS estimator is the simplest and has no optional arguments. The 2SLS
 estimator nests OLS and so it is possible to estimate models using OLS by
 specifying both <code class="docutils literal"><span class="pre">endog</span></code> and <code class="docutils literal"><span class="pre">instruments</span></code> as <code class="docutils literal"><span class="pre">None</span></code>.</p>
@@ -229,8 +229,8 @@ specifying both <code class="docutils literal"><span class="pre">endog</span></c
 </pre></div>
 </div>
 </div>
-<div class="section" id="LIML-Estimation">
-<h4>LIML Estimation<a class="headerlink" href="#LIML-Estimation" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="liml-estimation">
+<h4>LIML Estimation<a class="headerlink" href="#liml-estimation" title="Permalink to this headline">¶</a></h4>
 <p>Two optional arguments can be used to alter the estimation method when using IVLIML</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">fuller</span></code> allows Fuller’s <span class="math">\(\alpha\)</span> to be specified, which provides a
@@ -239,8 +239,8 @@ finite sample correction to the usual LIML estimator.</li>
 which case the LIML estimated value of <span class="math">\(\kappa\)</span> is ignored.</li>
 </ul>
 </div>
-<div class="section" id="GMM-and-GMM-CUE-Estimation">
-<h4>GMM and GMM-CUE Estimation<a class="headerlink" href="#GMM-and-GMM-CUE-Estimation" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="gmm-and-gmm-cue-estimation">
+<h4>GMM and GMM-CUE Estimation<a class="headerlink" href="#gmm-and-gmm-cue-estimation" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first"><code class="docutils literal"><span class="pre">weight_type</span></code> accepts a string which indicates the type of weighting
 matrix to use in the GMM estimation proceedure.  There are four classes
@@ -264,8 +264,8 @@ those for the corresponding covariance estimator.</p>
 </div>
 </div>
 </div>
-<div class="section" id="Model-Estimation-and-Covariance-Specification">
-<h2>Model Estimation and Covariance Specification<a class="headerlink" href="#Model-Estimation-and-Covariance-Specification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model-estimation-and-covariance-specification">
+<h2>Model Estimation and Covariance Specification<a class="headerlink" href="#model-estimation-and-covariance-specification" title="Permalink to this headline">¶</a></h2>
 <p>All models are estimated using teh <code class="docutils literal"><span class="pre">fit</span></code> method which provides an
 opportunity to customize the parameter covariance estimator used to
 perform inference. Four classes of covariance estimators are available:</p>
@@ -302,8 +302,8 @@ containing cluster membership information.</p>
 <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cov_type</span><span class="o">=</span><span class="s1">&#39;clustered&#39;</span><span class="p">,</span> <span class="n">clusters</span><span class="o">=</span><span class="n">iq_bands</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="GMM-Estimation">
-<h3>GMM Estimation<a class="headerlink" href="#GMM-Estimation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gmm-estimation">
+<h3>GMM Estimation<a class="headerlink" href="#gmm-estimation" title="Permalink to this headline">¶</a></h3>
 <p>GMM allows additional inputs that affect the method of estimation. In
 particular, the default is to use two-step GMM.  One-step (inefficient)
 GMM can be forced by setting <code class="docutils literal"><span class="pre">iter_limit</span></code> to 1.  If <code class="docutils literal"><span class="pre">iter_limit</span></code> is
@@ -315,8 +315,8 @@ is assumed to converge and the iterations are stopped.</p>
 as the weighting matrix.  <code class="docutils literal"><span class="pre">initial_weight</span></code> allows a user-specified choice of
 weighting matrix to be used instead.</p>
 </div>
-<div class="section" id="GMM-CUE-Estimation">
-<h3>GMM-CUE Estimation<a class="headerlink" href="#GMM-CUE-Estimation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gmm-cue-estimation">
+<h3>GMM-CUE Estimation<a class="headerlink" href="#gmm-cue-estimation" title="Permalink to this headline">¶</a></h3>
 <p>GMM CUE uses a non-linear optimizer to optimize the GMM objective directly
 where both the moment condition and the moment score estimator change with
 parameter values. <code class="docutils literal"><span class="pre">starting</span></code> allows a user-specified set of starting values
@@ -359,7 +359,7 @@ whether iterative output is printed during estimation.</p>
         <li class="right" >
           <a href="index.html" title="Instrumental Variable Estimation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+20.g56495ff documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+24.g0f3c8de documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Instrumental Variable Estimation</a> &#187;</li> 
       </ul>
     </div>
