@@ -60,6 +60,7 @@ devel/_sources/references.rst.txt
 devel/_sources/system/covariance.rst.txt
 devel/_sources/system/examples/examples.ipynb.txt
 devel/_sources/system/examples/formulas.ipynb.txt
+devel/_sources/system/examples/three-stage-least-squares.ipynb.txt
 devel/_sources/system/index.rst.txt
 devel/_sources/system/mathematical-formula.rst.txt
 devel/_sources/system/models.rst.txt
@@ -220,6 +221,7 @@ devel/searchindex.js
 devel/system/covariance.html
 devel/system/examples/examples.html
 devel/system/examples/formulas.html
+devel/system/examples/three-stage-least-squares.html
 devel/system/index.html
 devel/system/mathematical-formula.html
 devel/system/models.html
