@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" href="../_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>Formulas and Mathematical Detail &#8212; linearmodels 3.5+24.g0f3c8de documentation</title>
+    <title>Formulas and Mathematical Detail &#8212; linearmodels 3.5+26.ga2a505d documentation</title>
     <link rel="stylesheet" href="../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '3.5+24.g0f3c8de',
+        VERSION:     '3.5+26.ga2a505d',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -59,7 +59,7 @@
         <li class="right" >
           <a href="covariance.html" title="System Regression Estimator Covariance Estimation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+24.g0f3c8de documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+26.ga2a505d documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">System Regression Models</a> &#187;</li> 
       </ul>
     </div>
@@ -71,7 +71,7 @@
   <div id="left-column">
     <div class="sphinxsidebar">
         <a href="
-    ../index.html" class="text-logo">linearmodels 3.5 (+24, g0f3c8de)</a>
+    ../index.html" class="text-logo">linearmodels 3.5 (+26, ga2a505d)</a>
         
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
@@ -177,7 +177,7 @@ X_{1} &amp; 0 &amp; 0 &amp; 0\\
 \[\hat{\beta}=\left(X^{\prime}X\right)^{-1}X^{\prime}Y.\]</div>
 <p>A GLS estimator can be similarly defined as</p>
 <div class="math">
-\[\hat{\beta}_{GLS}=\left(X^{\prime}\Omega X\right)^{-1}X^{\prime}\Omega^{-1}Y\]</div>
+\[\hat{\beta}_{GLS}=\left(X^{\prime}\Omega^{-1}X\right)^{-1}X^{\prime}\Omega^{-1}Y\]</div>
 <p>where <span class="math">\(\Omega=I_{N}\otimes\Sigma\)</span> is the joint covariance of the
 residuals. In practice <span class="math">\(\Sigma\)</span> is not known as so a feasible GLS
 (FGLS) is implemented in two steps. The first uses OLS to estimate
@@ -188,8 +188,8 @@ residuals. In practice <span class="math">\(\Sigma\)</span> is not known as so a
 \hat{\epsilon}_{1} &amp; \hat{\epsilon}_{2} &amp; \ldots &amp; \hat{\epsilon}_{N}\end{array}\right].\]</div>
 <p>The feasible GLS estimator is then</p>
 <div class="math">
-\[\hat{\beta}_{FGLS}=\left(X^{\prime}\hat{\Omega}X\right)^{-1}X^{\prime}\hat{\Omega}^{-1}Y\]</div>
-<p>where <span class="math">\(\hat{\Omega}=I_{N}\otimes\hat{\Sigma}\)</span>.</p>
+\[\hat{\beta}_{FGLS}=\left(X^{\prime}\hat{\Omega}^{-1}X\right)^{-1}X^{\prime}\hat{\Omega}^{-1}Y\]</div>
+<p>where <span class="math">\(\hat{\Omega}=\hat{\Sigma}\otimes I_{N}\)</span>.</p>
 </div>
 <div class="section" id="covariance-estimation">
 <h3>Covariance Estimation<a class="headerlink" href="#covariance-estimation" title="Permalink to this headline">¶</a></h3>
@@ -296,7 +296,66 @@ is block diagonal,</p>
 can be avoided and many needless multiplications can be avoided by
 directly computing these two components and the solution can be found
 using <code class="docutils literal"><span class="pre">solve</span></code>.</p>
-<p>Sources used in writing the code include <a class="reference internal" href="../references.html#greene" id="id1">[Greene]</a>, <a class="reference internal" href="../references.html#stata" id="id2">[Stata]</a> and <a class="reference internal" href="../references.html#henningsen" id="id3">[Henningsen]</a>.</p>
+</div>
+<div class="section" id="three-stage-least-squares-3sls">
+<h2>Three Stage Least Squares (3SLS)<a class="headerlink" href="#three-stage-least-squares-3sls" title="Permalink to this headline">¶</a></h2>
+<p>Three-stage least squares extends SUR to the case of endogenous
+variables. It is the system extension of two-stage least squares (2SLS).
+Like SUR, 3SLS jointly estimates multiple models which allows joint
+hypothesis testing of parameters. It can also lead to more precise
+parameter estimates if some residuals are conditionally homoskedastic
+and regressors differ across equations.</p>
+<div class="section" id="id1">
+<h3>Basic Notation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Assume <span class="math">\(K\)</span> series are observed for <span class="math">\(N\)</span> time periods. Denote
+the stacked observations of series <span class="math">\(i\)</span> as <span class="math">\(Y_{i}\)</span> and its
+corresponding regressor matrix <span class="math">\(X_{i}\)</span>. The complete model
+spanning all series can be specified as</p>
+<div class="math">
+\[\begin{split}\begin{aligned}
+Y &amp; =X\beta+\epsilon\\
+\left[\begin{array}{c}
+Y_{1}\\
+Y_{2}\\
+\vdots\\
+Y_{K}
+\end{array}\right] &amp; =\left[\begin{array}{cccc}
+X_{1} &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; X_{2} &amp; 0 &amp; 0\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+0 &amp; 0 &amp; 0 &amp; X_{N}
+\end{array}\right]\left[\begin{array}{c}
+\beta_{1}\\
+\beta_{2}\\
+\vdots\\
+\beta_{K}
+\end{array}\right]+\left[\begin{array}{c}
+\epsilon_{1}\\
+\epsilon_{2}\\
+\vdots\\
+\epsilon_{K}
+\end{array}\right].\end{aligned}\end{split}\]</div>
+<p>where <span class="math">\(X_{i}\)</span> contains both exogenous and endogenous variables.
+For each equation denote the available instruments as <span class="math">\(Z_{i}\)</span>. The
+instrument include both exogenous regressors and excluded instrumental
+variables. Define the fitted values of the exogenous variables as</p>
+<div class="math">
+\[\hat{X}_{i}=Z\left(Z^{\prime}Z\right)^{-1}Z^{\prime}X.\]</div>
+<p>The IV estimator of <span class="math">\(\beta\)</span> is then</p>
+<div class="math">
+\[\hat{\beta}_{IV}=\left(\hat{X}^{\prime}\hat{X}\right)^{-1}\hat{X}^{\prime}Y.\]</div>
+<p>where</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}  \hat{X}=\left[\begin{array}{cccc}
+  \hat{X}_{1} &amp; 0 &amp; 0 &amp; 0\\
+  0 &amp; \hat{X}_{2} &amp; 0 &amp; 0\\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+  0 &amp; 0 &amp; 0 &amp; \hat{X}_{N}
+  \end{array}\right]\end{split}\\A GLS estimator can be similarly defined as\end{aligned}\end{align} \]</div>
+<div class="math">
+\[\hat{\beta}_{GLS}=\left(\hat{X}^{\prime}\Omega^{-1}\hat{X}\right)^{-1}\hat{X}^{\prime}\Omega^{-1}Y\]</div>
+<p>Sources used in writing the code include <a class="reference internal" href="../references.html#greene" id="id2">[Greene]</a>, <a class="reference internal" href="../references.html#stata" id="id3">[Stata]</a> and <a class="reference internal" href="../references.html#henningsen" id="id4">[Henningsen]</a>.</p>
+</div>
 </div>
 </div>
 
@@ -333,7 +392,7 @@ using <code class="docutils literal"><span class="pre">solve</span></code>.</p>
         <li class="right" >
           <a href="covariance.html" title="System Regression Estimator Covariance Estimation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+24.g0f3c8de documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">linearmodels 3.5+26.ga2a505d documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >System Regression Models</a> &#187;</li> 
       </ul>
     </div>
