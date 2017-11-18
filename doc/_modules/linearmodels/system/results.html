@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>linearmodels.system.results &#8212; linearmodels 3.5 documentation</title>
+    <title>linearmodels.system.results &#8212; linearmodels 4.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '3.5',
+        VERSION:     '4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -51,7 +51,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">linearmodels 3.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">linearmodels 4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>
@@ -63,7 +63,7 @@
   <div id="left-column">
     <div class="sphinxsidebar">
         <a href="
-    ../../../index.html" class="text-logo">linearmodels 3.5</a>
+    ../../../index.html" class="text-logo">linearmodels 4.0</a>
         
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
@@ -130,7 +130,7 @@
 <span class="kn">from</span> <span class="nn">linearmodels.utility</span> <span class="k">import</span> <span class="p">(</span><span class="n">AttrDict</span><span class="p">,</span> <span class="n">_SummaryStr</span><span class="p">,</span> <span class="n">cached_property</span><span class="p">,</span>
                                   <span class="n">_str</span><span class="p">,</span> <span class="n">param_table</span><span class="p">,</span> <span class="n">pval_format</span><span class="p">)</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SURResults&#39;</span><span class="p">,</span> <span class="s1">&#39;SUREquationResult&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SystemResults&#39;</span><span class="p">,</span> <span class="s1">&#39;SystemEquationResult&#39;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">_CommonResults</span><span class="p">(</span><span class="n">_SummaryStr</span><span class="p">):</span>
@@ -270,7 +270,7 @@
         <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_param_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="s1">&#39;upper&#39;</span><span class="p">])</span>
 
 
-<div class="viewcode-block" id="SURResults"><a class="viewcode-back" href="../../../system/results.html#linearmodels.system.results.SURResults">[docs]</a><span class="k">class</span> <span class="nc">SURResults</span><span class="p">(</span><span class="n">_CommonResults</span><span class="p">):</span>
+<div class="viewcode-block" id="SystemResults"><a class="viewcode-back" href="../../../system/results.html#linearmodels.system.results.SystemResults">[docs]</a><span class="k">class</span> <span class="nc">SystemResults</span><span class="p">(</span><span class="n">_CommonResults</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Results from Seemingly Unrelated Regression Estimators</span>
 
@@ -281,10 +281,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SURResults</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SystemResults</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_individual</span> <span class="o">=</span> <span class="n">AttrDict</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">individual</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_individual</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">SUREquationResult</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">individual</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_individual</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">SystemEquationResult</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">individual</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sigma</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">sigma</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_constraints</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">constraints</span>
@@ -375,7 +375,7 @@
         <span class="k">return</span> <span class="n">smry</span></div>
 
 
-<span class="k">class</span> <span class="nc">SUREquationResult</span><span class="p">(</span><span class="n">_CommonResults</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">SystemEquationResult</span><span class="p">(</span><span class="n">_CommonResults</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Results from a single equation of a Seemingly Unrelated Regression</span>
 
@@ -386,7 +386,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SUREquationResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SystemEquationResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_eq_label</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">eq_label</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dependent</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">dependent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_f_statistic</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">f_stat</span>
@@ -503,7 +503,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">linearmodels 3.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">linearmodels 4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

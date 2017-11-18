@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" href="../../_static/css/bootstrap-theme.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <title>Using formulas to specify models &#8212; linearmodels 3.5 documentation</title>
+    <title>Using formulas to specify models &#8212; linearmodels 4.0 documentation</title>
     <link rel="stylesheet" href="../../_static/guzzle.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '3.5',
+        VERSION:     '4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -34,7 +34,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Module Reference" href="../reference.html" />
+    <link rel="next" title="Three-stage Least Squares (3SLS)" href="three-stage-ls.html" />
     <link rel="prev" title="Examples" href="examples.html" />
   
   
@@ -54,12 +54,12 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../reference.html" title="Module Reference"
+          <a href="three-stage-ls.html" title="Three-stage Least Squares (3SLS)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="examples.html" title="Examples"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">linearmodels 3.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">linearmodels 4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">System Regression Models</a> &#187;</li> 
       </ul>
     </div>
@@ -71,7 +71,7 @@
   <div id="left-column">
     <div class="sphinxsidebar">
         <a href="
-    ../../index.html" class="text-logo">linearmodels 3.5</a>
+    ../../index.html" class="text-logo">linearmodels 4.0</a>
         
 <div class="sidebar-block">
   <div class="sidebar-wrapper">
@@ -88,6 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">System Regression Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using formulas to specify models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="three-stage-ls.html">Three-stage Least Squares (3SLS)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html">Module Reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mathematical-formula.html">Formulas and Mathematical Detail</a></li>
 </ul>
@@ -292,7 +293,11 @@ div.nboutput div.output_area.stderr {
 .ansi-white-intense-fg { color: #A1A6B2; }
 .ansi-white-intense-bg { background-color: #A1A6B2; }
 
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
 .ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
 </style>
 <div class="section" id="Using-formulas-to-specify-models">
 <h1>Using formulas to specify models<a class="headerlink" href="#Using-formulas-to-specify-models" title="Permalink to this headline">¶</a></h1>
@@ -308,7 +313,7 @@ there are two methods available to specify a system:</p>
 Simple Estimator for Simultaneous Models with Censored Endogenous
 Regressors” which appears in Wooldridge (2002). The model consists of
 two equations, one for hourly wage and the other for hourly benefits.
-The initial model uses the same regressors in both equaitons.</p>
+The initial model uses the same regressors in both equations.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [1]:
@@ -325,7 +330,7 @@ The initial model uses the same regressors in both equaitons.</p>
 <div class="section" id="Dictionary">
 <h2>Dictionary<a class="headerlink" href="#Dictionary" title="Permalink to this headline">¶</a></h2>
 <p>The dictionary syntax is virtually identical to standard patsy syntax
-where each eqaution is specified in a kay-value pair where the key is
+where each equation is specified in a key-value pair where the key is
 the equation label and the value is the formula. It is recommended to
 use an OrderedDict which will preserve equation order in results. Keys
 <strong>must</strong> be strings.</p>
@@ -364,8 +369,8 @@ use an OrderedDict which will preserve equation order in results. Keys
 Estimator:                        GLS   Overall R-squared:              0.6951
 No. Equations.:                     2   Cov. Estimator:             unadjusted
 No. Observations:                 616   Num. Constraints:                 None
-Date:                Thu, Nov 02 2017
-Time:                        21:41:57
+Date:                Sat, Nov 18 2017
+Time:                        00:27:57
 
 
                 Equation: benefits, Dependent Variable: hrbens
@@ -426,8 +431,8 @@ equation with braces <code class="docutils literal"><span class="pre">{}</span><
 Estimator:                        GLS   Overall R-squared:              0.6951
 No. Equations.:                     2   Cov. Estimator:             unadjusted
 No. Observations:                 616   Num. Constraints:                 None
-Date:                Thu, Nov 02 2017
-Time:                        21:41:57
+Date:                Sat, Nov 18 2017
+Time:                        00:27:57
 
 
                  Equation: hrbens, Dependent Variable: hrbens
@@ -461,10 +466,10 @@ male           1.8899     0.3904     4.8408     0.0000      1.1247      2.6551
 <div class="section" id="Labeled-Formulas">
 <h2>Labeled Formulas<a class="headerlink" href="#Labeled-Formulas" title="Permalink to this headline">¶</a></h2>
 <p>When using the curly brace formula specification, the equation names are
-determined by the dependent variable names. Whne names are repeated as
+determined by the dependent variable names. When names are repeated as
 is the case in some datasets (e.g. a SUR on GDP of multiple countries)
-then the equation lables will be uglified until they are unique. This
-can produce meaningless equation lables, and so it is possible to pass
+then the equation labels will be “uglified” until they are unique. This
+can produce meaningless equation labels, and so it is possible to pass
 an equation label using the syntax</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">label</span> <span class="p">:</span> <span class="n">dep</span> <span class="o">~</span> <span class="n">exog</span><span class="p">}</span>
 </pre></div>
@@ -479,8 +484,8 @@ an equation label using the syntax</p>
 <span class="s1">{benefits: hrbens ~ educ + exper + expersq + union + south + nrtheast + nrthcen + male}</span>
 <span class="s1">{earnings: hrearn ~ educ + exper + expersq + nrtheast + married + male}</span>
 <span class="s1">&#39;&#39;&#39;</span>
-<span class="n">labeles_mod</span> <span class="o">=</span> <span class="n">SUR</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="n">labeled_formula</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="n">labeled_res</span> <span class="o">=</span> <span class="n">labeles_mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cov_type</span><span class="o">=</span><span class="s1">&#39;unadjusted&#39;</span><span class="p">)</span>
+<span class="n">labels_mod</span> <span class="o">=</span> <span class="n">SUR</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="n">labeled_formula</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">labeled_res</span> <span class="o">=</span> <span class="n">labels_mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cov_type</span><span class="o">=</span><span class="s1">&#39;unadjusted&#39;</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Unlabeled&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">braces_res</span><span class="o">.</span><span class="n">equation_labels</span><span class="p">)</span>
@@ -532,36 +537,36 @@ from those in the standard GLS model.</p>
 <div class="highlight"><pre>
                         System GLS Estimation Summary
 ==============================================================================
-Estimator:                        GLS   Overall R-squared:              0.6911
+Estimator:                        GLS   Overall R-squared:              0.7336
 No. Equations.:                     2   Cov. Estimator:                 robust
 No. Observations:                 616   Num. Constraints:                 None
-Date:                Thu, Nov 02 2017
-Time:                        21:41:57
+Date:                Sat, Nov 18 2017
+Time:                        00:27:57
 
 
                 Equation: benefits, Dependent Variable: hrbens
 ==============================================================================
             Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
 ------------------------------------------------------------------------------
-educ           0.0354     0.0053     6.6534     0.0000      0.0250      0.0458
-exper          0.0442     0.0068     6.5033     0.0000      0.0309      0.0575
-expersq       -0.0009     0.0002    -5.5512     0.0000     -0.0012     -0.0006
-union          0.4084     0.0566     7.2091     0.0000      0.2973      0.5194
-south         -0.2378     0.0622    -3.8205     0.0001     -0.3597     -0.1158
-nrtheast      -0.1779     0.0753    -2.3635     0.0181     -0.3254     -0.0304
-nrthcen       -0.1927     0.0663    -2.9076     0.0036     -0.3226     -0.0628
-male           0.2515     0.0558     4.5073     0.0000      0.1422      0.3609
+educ           0.0339     0.0052     6.5554     0.0000      0.0238      0.0441
+exper          0.0321     0.0062     5.1630     0.0000      0.0199      0.0443
+expersq       -0.0006     0.0001    -3.9026     0.0001     -0.0008     -0.0003
+union          0.3593     0.0599     5.9941     0.0000      0.2418      0.4768
+south         -0.1649     0.0653    -2.5253     0.0116     -0.2929     -0.0369
+nrtheast      -0.1206     0.0805    -1.4989     0.1339     -0.2783      0.0371
+nrthcen       -0.1115     0.0688    -1.6211     0.1050     -0.2462      0.0233
+male           0.2829     0.0535     5.2889     0.0000      0.1781      0.3878
 
                 Equation: earnings, Dependent Variable: hrearn
 ==============================================================================
             Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
 ------------------------------------------------------------------------------
-educ           0.3400     0.1089     3.1229     0.0018      0.1266      0.5535
-exper         -0.0673     0.2493    -0.2698     0.7873     -0.5560      0.4214
-expersq        0.0037     0.0066     0.5700     0.5687     -0.0091      0.0166
-nrtheast      -0.5758     0.5156    -1.1168     0.2641     -1.5863      0.4347
-married        0.5123     0.3728     1.3742     0.1694     -0.2184      1.2430
-male           1.8723     0.3063     6.1132     0.0000      1.2720      2.4726
+educ           0.4236     0.1512     2.8014     0.0051      0.1272      0.7199
+exper         -0.2695     0.3459    -0.7791     0.4359     -0.9474      0.4084
+expersq        0.0087     0.0089     0.9782     0.3280     -0.0087      0.0262
+nrtheast      -1.0176     0.6557    -1.5518     0.1207     -2.3028      0.2676
+married        0.6932     0.4509     1.5375     0.1242     -0.1905      1.5769
+male           2.2588     0.3104     7.2766     0.0000      1.6504      2.8672
 
 ==============================================================================
 </pre></div></div>
@@ -587,7 +592,7 @@ identical to passing one to the standard SUR.</p>
       </div>
     
       <div class="pull-right">
-        <a class="btn btn-default" href="../reference.html" title="next chapter (use the right arrow)">Module Reference</a>
+        <a class="btn btn-default" href="three-stage-ls.html" title="next chapter (use the right arrow)">Three-stage Least Squares (3SLS)</a>
       </div>
     </div>
     <div class="clearer"></div>
@@ -605,12 +610,12 @@ identical to passing one to the standard SUR.</p>
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../reference.html" title="Module Reference"
+          <a href="three-stage-ls.html" title="Three-stage Least Squares (3SLS)"
              >next</a> |</li>
         <li class="right" >
           <a href="examples.html" title="Examples"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">linearmodels 3.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">linearmodels 4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >System Regression Models</a> &#187;</li> 
       </ul>
     </div>

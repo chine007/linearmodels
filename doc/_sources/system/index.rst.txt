@@ -1,8 +1,8 @@
 System Regression Models
 ------------------------
 
-System regression estimates multiple regressions simulteneously.  There are
-three reasons to consider system estimation in stread of equation by
+System regression estimates multiple regressions simultaneously.  There are
+three reasons to consider system estimation instead of equation by
 equation estimation
 
 * Joint inference on parameters across models
@@ -12,8 +12,9 @@ equation estimation
 The main model is the Seemingly Unrelated Regression (:class:`~linearmodels.system.model.SUR`)
 Estimator.  This estimator uses a modified syntax since the class allow
 multiple models to be specified, each with it own dependent and exogenous
-variablces. The preferred syntax uses an (:class:`dict`) or preferrable
-an (:class:`~collections.OrderedDict`) where each entry is a complete model
+variables. The more structured syntax uses a :class:`dict` or preferably
+an :class:`~collections.OrderedDict`, which ensures that the order of the
+equations in the results is preserved, where each entry is a complete model
 with a dependent and exogenous (stored as a :class:`dict` with keys
 ``dependent`` and ``exog``.
 
@@ -29,6 +30,8 @@ with a dependent and exogenous (stored as a :class:`dict` with keys
                            'exog': data[['const', 'exper', 'tenure']]}
   equations['benefits'] = {'dependent': data.hrbens,
                            'exog': data[['const', 'exper', 'tenure']]}
+  mod = SUR(equations)
+  mod.fit(cov_type='unadjusted')
 
 
 ::
@@ -59,8 +62,15 @@ with a dependent and exogenous (stored as a :class:`dict` with keys
    tenure         0.0316     0.0039     8.1254     0.0000      0.0240      0.0393
 
    ==============================================================================
-   SURResults, id: 0x282ca8f7b70
+   SystemResults, id: 0x282ca8f7b70
 
+
+
+In addition to SUR, the system module also contain an estimator for the Three-stage Least
+Squares (:class:`~linearmodels.system.model.IV3SLS`) Estimator.  3SLS is a generalization of
+SUR which allows variables to be either exogenous or endogenous, and when there are endogenous
+variables, for instruments to be used.  SUR is a special case of 3SLS where there are no
+endogenous variables or instruments. 3SLS allows systems of IV equations to be jointly estimated.
 
 .. toctree::
    :maxdepth: 1
@@ -68,5 +78,6 @@ with a dependent and exogenous (stored as a :class:`dict` with keys
 
    examples/examples.ipynb
    examples/formulas.ipynb
+   examples/three-stage-ls.ipynb
    reference
    mathematical-formula
